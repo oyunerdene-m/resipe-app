@@ -1,7 +1,11 @@
 <template>
-    <ul>
-        <recipe-item  v-for="recipe in recipes" :recipe="recipe"></recipe-item>
-    </ul>
+    <div class="list">
+        <h2>Recipe list</h2>
+        <ul>
+            <recipe-item  v-for="recipe in recipes" :recipe="recipe"></recipe-item>
+        </ul>
+    </div>
+   
 </template>
 
 <script>
@@ -20,4 +24,9 @@
     }
 </script>
 
-<style></style>
+<style>
+    .list {
+        border: 1px solid blue;
+        width: 40%
+    }
+</style>
