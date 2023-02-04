@@ -1,45 +1,44 @@
 <template>
-    <div class="recipe_detail" v-if="recipe">
-        <h1>{{recipe.name}}</h1>
+    <div class="recipe_detail" v-if="favorite">
+        <h1>{{favorite.name}}</h1>
         <div class="content">
             <div class="image">  
-                <img :src="recipe.image" alt=""/>
+                <img :src="favorite.image" alt=""/>
             </div>
             <div class="text">
-                <p>{{recipe.description}}</p>
+                <p>{{favorite.description}}</p>
                 <h5>Instruction:</h5> 
-                <p>{{recipe.instruction}}</p>
+                <p>{{favorite.instruction}}</p>
                 <h5>Ingredients:</h5> 
-                <ul v-for="ingredient in recipe.inredients">
+                <ul v-for="ingredient in favorite.inredients">
                     <li>{{ingredient}}</li>
                 </ul>
             </div>
         </div>
-        <button >
-            <span v-if="!isFavorited">Add to favorites</span>
-            <span v-else>Favorited</span>
-        </button>
-
+        <button @click="removeFromFavorites">Remove from favorites</button>
+      
     </div>
     
 </template>
 
 <script>
-    import {eventBus} from '../../main'
+    import {eventBus} from '../../../main'
     export default {
         data: function(){
             return {
-                recipe: null,
-                isFavorited: null
+                favorite: null
+            }
+        },
+
+        methods: {
+            removeFromFavorites(){
+                eventBus.$emit('removedFromFavorites', this.favorite.id)
             }
         },
 
         created(){
-            eventBus.$on('recipeSelected', (data) => {
-                this.recipe = data
-            })
-            eventBus.$on('isFavorited', (data) => {
-                this.isFavorited = data
+            eventBus.$on('favoriteSelected', (data) => {
+                this.favorite = data
             })
         }
     }
