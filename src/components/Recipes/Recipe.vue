@@ -7,7 +7,10 @@
             <div class="recipe_text">
                 <h3 @click="showDetail" class="recipe_name">{{ recipe.name }}</h3>
                 <p>{{recipe.description}}</p>
+                <button>Add to favorites</button>
+
             </div>
+
         </div>
     </li>
 </template>

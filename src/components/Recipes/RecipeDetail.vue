@@ -1,5 +1,5 @@
 <template>
-    <div class="recipe_detail">
+    <div class="recipe_detail" v-if="recipe">
         <h1>{{recipe.name}}</h1>
         <div class="content">
             <div class="image">  
@@ -15,7 +15,7 @@
                 </ul>
             </div>
         </div>
-      
+      <button>Add to favorites</button>
       
     </div>
     

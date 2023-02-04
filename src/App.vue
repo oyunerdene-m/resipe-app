@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-        <ul>
+        <ul v-if="!user">
           <li>
             <router-link to="/login">Login</router-link>
           </li>
@@ -13,9 +13,24 @@
     </nav>
     <!-- Main -->
     <div class="App">
-        <router-view ></router-view>
+        <router-view></router-view>
     </div>
   </div>
 </template>
 
-<script></script>
+<script>
+    import { eventBus} from './main';
+
+    export default {
+        data: function(){
+            return {
+                user: null
+            }
+        },
+        created(){
+            eventBus.$on("loggedInUser", data=>{
+                this.user = data
+            })
+        }
+    }
+</script>

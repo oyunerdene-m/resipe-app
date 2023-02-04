@@ -1,6 +1,16 @@
 <template>
     <div class="container">
-        <h1>Recipe App</h1>
+        <div>
+            <h3>Welcome <span v-if="user">{{user.displayName}}</span></h3>
+            <button>My recipe</button>
+            <button>My favorites</button>
+
+            <button 
+                type="submit" 
+                @click="logOut()">
+                    Log out
+            </button>
+        </div>
         <div class="main_page">
             <app-recipes :recipes="recipes"></app-recipes>
             <recipe-detail></recipe-detail>
@@ -9,10 +19,12 @@
 </template>
 
 <script>
+    import firebase from 'firebase'
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
 
     export default {
+
         components: {
             appRecipes: Recipes,
             recipeDetail: RecipeDetail
@@ -20,6 +32,7 @@
 
         data: function(){
             return {
+                user : null,
                 recipes: [
                     {
                     id: 1, 
@@ -46,6 +59,24 @@
                     inredients: ['spaghetti', 'Parmesan cheese', 'olive oil', 'chopped tomatoes', 'onion', 'garlic', "fresh basil"]
                     }
                 ]
+            }
+        },
+        created() {
+            firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.user = user;
+            } else {
+                this.user = null;
+            }
+            });
+        },
+        methods: {
+            logOut() {
+                firebase.auth().signOut().then(() => {
+                    firebase.auth().onAuthStateChanged(() => {
+                    this.$router.push('/login')
+                    })
+                })
             }
         }
     }
