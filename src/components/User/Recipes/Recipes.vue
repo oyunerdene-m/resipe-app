@@ -1,32 +1,57 @@
 <template>
-    <div class="list">
-        <h2>Recipe list</h2>
-        <ul>
-            <recipe-item  v-for="recipe in recipes" :recipe="recipe"></recipe-item>
-        </ul>
+    <div class="content">
+        <div class="my_list">
+            <h2>My recipes</h2>
+            <button><router-link to="/my-recipes/new">Add new recipe</router-link></button>
+            <ul>
+                <recipe-item  v-for="recipe in recipes" :recipe="recipe" :key="recipe.id"></recipe-item>
+            </ul>
+        </div>
+        <div class="detail">
+            <recipe-detail></recipe-detail>
+        </div>
     </div>
    
 </template>
 
 <script>
     import Recipe from './Recipe.vue'
+    import RecipeDetail from './RecipeDetail.vue';
+    import data from '../../../lib/data';
+    import { eventBus } from '../../../main';
 
     export default {
-        props: {
-            'recipes': {
-                type: Array
+        data: function(){
+            return {
+                recipes: data.user.userRecipes
             }
         },
 
         components : {
-            recipeItem: Recipe
+            recipeItem: Recipe,
+            recipeDetail: RecipeDetail
+        },
+
+        created(){
+            eventBus.$on('recipeDeleted', id=>{
+                data.user.userRecipes = data.user.userRecipes.filter(recipe => recipe.id !== id)
+                this.recipes = this.recipes.filter(recipe => recipe.id !== id)
+            })
         }
     }
 </script>
 
-<style>
-    .list {
+<style scoped>
+    .content {
+        display: flex
+    }
+    .my_list {
         border: 1px solid blue;
         width: 40%
+    }
+
+    .detail {
+        border: 1px solid red;
+        width: 60%
     }
 </style>

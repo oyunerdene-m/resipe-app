@@ -15,31 +15,30 @@
                 </ul>
             </div>
         </div>
-        <button >
-            <span v-if="!isFavorited">Add to favorites</span>
-            <span v-else>Favorited</span>
-        </button>
-
     </div>
     
 </template>
 
 <script>
-    import {eventBus} from '../../main'
+    import {eventBus} from '../../../main'
     export default {
         data: function(){
             return {
                 recipe: null,
-                isFavorited: null
             }
         },
 
         created(){
             eventBus.$on('recipeSelected', (data) => {
                 this.recipe = data
+                console.log(this.recipe)
+
             })
-            eventBus.$on('isFavorited', (data) => {
-                this.isFavorited = data
+            eventBus.$on('recipeDeleted', (id) => {
+                if(this.recipe.id === id){
+                    this.recipe = null
+                }
+
             })
         }
     }

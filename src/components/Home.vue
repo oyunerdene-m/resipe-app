@@ -2,10 +2,8 @@
     <div class="container">
         <div>
             <h3>Welcome <span v-if="user">{{user.displayName}}</span></h3>
-            <button>My recipe</button>
-           
+            <button><router-link to="/my-recipes">My recipes</router-link></button>
             <button><router-link to="/favorites">My favorites</router-link></button>
-
             <button 
                 type="submit" 
                 @click="logOut()">

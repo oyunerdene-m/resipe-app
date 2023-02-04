@@ -7,7 +7,25 @@ const data = {
 				id: 1,
 				name: "aaaa",
 				description: "aaafffeer",
-				image: "",
+				image: "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
+				instruction: "Lorem ipsum dolor sit amet, consectetur ",
+				inredients: ["meat", "flour"],
+			},
+			{
+				id: 2,
+				name: "bbb",
+				description: "fff",
+				image:
+					"https://www.chefkoch.de/magazin/sites/default/files/styles/hero/public/media/image/2021-09/ARtikel_6979_CK_0520_Wochenplaner_Kalorienarme-Bananen-Pancakes_home.jpg",
+				instruction: "Lorem ipsum dolor sit amet, consectetur ",
+				inredients: ["meat", "flour"],
+			},
+			{
+				id: 3,
+				name: "ccc",
+				description: "jjj",
+				image:
+					"https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505",
 				instruction: "Lorem ipsum dolor sit amet, consectetur ",
 				inredients: ["meat", "flour"],
 			},

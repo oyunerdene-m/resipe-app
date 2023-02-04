@@ -7,10 +7,8 @@
             <div class="recipe_text">
                 <h3 @click="showDetail" class="recipe_name">{{ recipe.name }}</h3>
                 <p>{{recipe.description}}</p>
-                <button >
-                    <span v-if="!isFavorited" @click="addToFavorites">Add to favorites</span>
-                    <span v-else>Favorited</span>
-                </button>
+                <button><router-link :to="`/my-recipes/edit/${recipe.id}`">edit</router-link></button>
+                <button @click="deleteRecipe">delete</button>
 
             </div>
 
@@ -19,27 +17,17 @@
 </template>
 
 <script>
-    import {eventBus} from '../../main'
-    import {isFavorited} from '../../lib/getFavorites';
-    import data from '../../lib/data';
+    import {eventBus} from '../../../main'
     
     export default {
-        data: function(){
-            return {
-                isFavorited: isFavorited(this.recipe, data.user.favoritesIds),
-                favoritesIds: data.user.favoritesIds
-            }
-        }, 
         props: ['recipe'],
+
         methods:{
             showDetail(){
                 eventBus.$emit('recipeSelected', this.recipe)
-                eventBus.$emit('isFavorited', this.isFavorited)
             },
-            addToFavorites(){
-                this.favoritesIds.push(this.recipe.id)
-                this.isFavorited = true
-
+            deleteRecipe(){
+                eventBus.$emit('recipeDeleted', this.recipe.id)
             }
         }
     }
