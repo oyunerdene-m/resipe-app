@@ -22,8 +22,11 @@
                 </ul>
             </nav> 
         </div>
+        <search-form></search-form>
         <div class="main_page">
-            <app-recipes :recipes="recipes"></app-recipes>
+
+            <app-recipes :recipes='recipes'></app-recipes>
+
             <recipe-detail></recipe-detail>
         </div>
     </div>
@@ -33,19 +36,22 @@
     import firebase from 'firebase'
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
+    import SearchForm from './Shared/Search/SearchForm.vue'
     import data from '../lib/data'
+    import { eventBus } from '../main'
 
     export default {
 
         components: {
             appRecipes: Recipes,
-            recipeDetail: RecipeDetail
+            recipeDetail: RecipeDetail,
+            searchForm: SearchForm
         },
 
         data: function(){
             return {
                 user : null,
-                recipes: data.recipes
+                recipes: data.recipes,
             }
         },
         created() {
@@ -56,6 +62,10 @@
                 this.user = null;
             }
             });
+            eventBus.$on('filtered', data=>{
+                this.recipes = data
+
+            })
         },
         methods: {
             logOut() {
