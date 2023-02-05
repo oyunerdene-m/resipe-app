@@ -3,7 +3,7 @@
     <div class="content">
 
         <div class="my_list">
-            <router-link to="/home">Home</router-link>
+            <router-link to="/">Home</router-link>
 
             <h2>My recipes</h2>
             <button><router-link to="/my-recipes/new">Add new recipe</router-link></button>

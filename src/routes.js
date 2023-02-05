@@ -5,13 +5,12 @@ import FavoritesList from "./components/User/Favorites/FavoritesList.vue";
 import Recipes from "./components/User/Recipes/Recipes.vue";
 import RecipeForm from "./components/User/Recipes/NewRecipe/RecipeForm.vue";
 import EditForm from "./components/User/Recipes/EditForm.vue";
-import Page from "./components/Page.vue";
 
 export const routes = [
 	{
 		path: "/",
-		name: "page",
-		component: Page,
+		name: "home",
+		component: Home,
 	},
 	{
 		path: "/login",
@@ -22,11 +21,6 @@ export const routes = [
 		path: "/signup",
 		name: "signup",
 		component: Signup,
-	},
-	{
-		path: "/home",
-		name: "home",
-		component: Home,
 	},
 	{
 		path: "/favorites",
@@ -48,9 +42,4 @@ export const routes = [
 		name: "edit",
 		component: EditForm,
 	},
-	// {
-	// 	path: "/page",
-	// 	name: "page",
-	// 	component: Page,
-	// },
 ];

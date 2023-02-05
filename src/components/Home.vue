@@ -10,6 +10,18 @@
                     Log out
             </button>
         </div>
+        <div v-else>
+            <nav class="navbar">
+                <ul>
+                <li>
+                    <router-link to="/login">Login</router-link>
+                </li>
+                <li>
+                    <router-link to="/">Sign up</router-link>
+                </li>
+                </ul>
+            </nav> 
+        </div>
         <div class="main_page">
             <app-recipes :recipes="recipes"></app-recipes>
             <recipe-detail></recipe-detail>
