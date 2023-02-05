@@ -13,10 +13,10 @@
                <p>{{recipe.ingredients}}</p>
             </div>
         </div>
-        <button >
+        <!-- <button >
             <span v-if="!isFavorited">Add to favorites</span>
             <span v-else>Favorited</span>
-        </button>
+        </button> -->
 
     </div>
     
@@ -33,7 +33,7 @@
         },
 
         created(){
-            eventBus.$on('recipeSelected', (data) => {
+            eventBus.$on('myrecipeSelected', (data) => {
                 this.recipe = data
             })
             eventBus.$on('isFavorited', (data) => {

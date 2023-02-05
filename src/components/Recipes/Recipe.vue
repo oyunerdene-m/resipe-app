@@ -8,7 +8,7 @@
             <div class="recipe_text">
                 <h3 @click="showDetail" class="recipe_name">{{ recipe.name }}</h3>
                 <p>{{recipe.description}}</p>
-                <button >
+                <button>
                     <p v-if="userstate">
                         <span v-if="!isFavorited" @click="addToFavorites">Add to favorites</span>
                         <span v-else>Favorited </span>
@@ -29,6 +29,7 @@
     import {isFavorited} from '../../lib/getFavorites';
     import data from '../../lib/data';
     import firebase from 'firebase';
+    import { eventBus } from '../../main';
 
     export default {
         data: function(){
@@ -41,7 +42,7 @@
         props: ['recipe'],
         methods:{
             showDetail(){
-                eventBus.$emit('recipeSelected', this.recipe)
+                eventBus.$emit('myrecipeSelected', this.recipe)
                 eventBus.$emit('isFavorited', this.isFavorited)
             },
             addToFavorites(){

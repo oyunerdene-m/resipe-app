@@ -13,8 +13,16 @@
             </nav>
         </div>
         <div class="main_page">
-            <app-recipes :recipes="recipes"></app-recipes>
-            <recipe-detail></recipe-detail>
+            <div class="my_content">
+                <div class="my_list">
+                    <app-recipes :recipes="recipes"></app-recipes>
+                </div>
+                <div class="my_detail">
+                    <recipe-detail></recipe-detail>
+                </div>
+            </div>
+           
+            
         </div>
     </div>
 </template>
@@ -38,3 +46,14 @@
         }
     }
 </script>
+<style scoped>
+    .my_content {
+        display: flex;
+    }
+    .my_list {
+        width: 60%;
+    }
+    .my_detail {
+        width: 40%;
+    }
+</style>

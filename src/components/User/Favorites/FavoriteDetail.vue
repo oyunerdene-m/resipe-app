@@ -14,8 +14,8 @@
                 
             </div>
         </div>
-        <button @click="removeFromFavorites">Remove from favorites</button>
-      
+        <!-- <button @click="removeFromFavorites">Remove from favorites</button>
+       -->
     </div>
     
 </template>
