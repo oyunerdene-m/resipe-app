@@ -1,10 +1,14 @@
 <template>
+
     <div class="content">
+
         <div class="my_list">
+            <router-link to="/home">Home</router-link>
+
             <h2>My recipes</h2>
             <button><router-link to="/my-recipes/new">Add new recipe</router-link></button>
             <ul>
-                <recipe-item  v-for="recipe in recipes" :recipe="recipe" :key="recipe.id"></recipe-item>
+                <recipe-item  v-for="recipe in recipes" :recipe="recipe" ></recipe-item>
             </ul>
         </div>
         <div class="detail">

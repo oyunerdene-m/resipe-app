@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- Navigation -->
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <ul v-if="!user">
           <li>
             <router-link to="/login">Login</router-link>
@@ -10,7 +10,7 @@
             <router-link to="/">Sign up</router-link>
           </li>
         </ul>
-    </nav>
+    </nav> -->
     <!-- Main -->
     <div class="App">
         <router-view></router-view>

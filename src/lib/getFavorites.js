@@ -5,3 +5,7 @@ export const getFavorites = (recipes, ids) => {
 export const isFavorited = (recipe, ids) => {
 	return ids.includes(recipe.id);
 };
+
+export const getRecipe = (recipes, id) => {
+	return recipes.filter((recipe) => recipe.id === id);
+};

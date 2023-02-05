@@ -1,5 +1,5 @@
 <template>
-    <li>
+    <li :key="recipe.id">
         <div class="recipe"> 
             <div class="recipe_image">
                 <img :src="recipe.image" alt="">
@@ -9,7 +9,6 @@
                 <p>{{recipe.description}}</p>
                 <button><router-link :to="`/my-recipes/edit/${recipe.id}`">edit</router-link></button>
                 <button @click="deleteRecipe">delete</button>
-
             </div>
 
         </div>
@@ -28,7 +27,10 @@
             },
             deleteRecipe(){
                 eventBus.$emit('recipeDeleted', this.recipe.id)
-            }
+            },
+            
+           
+           
         }
     }
 </script>

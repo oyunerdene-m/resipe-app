@@ -9,7 +9,7 @@ const data = {
 				description: "aaafffeer",
 				image: "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
 				instruction: "Lorem ipsum dolor sit amet, consectetur ",
-				inredients: ["meat", "flour"],
+				inredients: "meat flour",
 			},
 			{
 				id: 2,
@@ -18,7 +18,7 @@ const data = {
 				image:
 					"https://www.chefkoch.de/magazin/sites/default/files/styles/hero/public/media/image/2021-09/ARtikel_6979_CK_0520_Wochenplaner_Kalorienarme-Bananen-Pancakes_home.jpg",
 				instruction: "Lorem ipsum dolor sit amet, consectetur ",
-				inredients: ["meat", "flour"],
+				inredients: "meat flour",
 			},
 			{
 				id: 3,
@@ -27,7 +27,7 @@ const data = {
 				image:
 					"https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505",
 				instruction: "Lorem ipsum dolor sit amet, consectetur ",
-				inredients: ["meat", "flour"],
+				inredients: "meat flour",
 			},
 		],
 	},
@@ -38,7 +38,7 @@ const data = {
 			description: "Mongolian traditional holiday food with meat and flour",
 			image: "https://mongolamerican.files.wordpress.com/2012/07/buuz_831.jpg",
 			instruction: "Lorem ipsum dolor sit amet, consectetur ",
-			inredients: ["meat", "flour", "water", "salt", "onion"],
+			inredients: "meat flour water salt onion",
 		},
 		{
 			id: 2,
@@ -48,7 +48,7 @@ const data = {
 			image:
 				"https://www.vegrecipesofindia.com/wp-content/uploads/2020/11/pizza-recipe-1152x1536.jpg",
 			instruction: "Sed ut perspiciatis unde omnis iste natus error sit  ",
-			inredients: ["flour", "water", "salt", "onion", "olive", "ham", "cheese", "mushrooms"],
+			inredients: "flour water salt onion olive ham cheese mushrooms",
 		},
 		{
 			id: 3,
@@ -58,15 +58,7 @@ const data = {
 			image:
 				"https://www.endofthefork.com/wp-content/uploads/2021/06/1200x1200-pasta-and-sauce.jpg",
 			instruction: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,",
-			inredients: [
-				"spaghetti",
-				"Parmesan cheese",
-				"olive oil",
-				"chopped tomatoes",
-				"onion",
-				"garlic",
-				"fresh basil",
-			],
+			inredients: "flour water salt onion olive ham cheese mushrooms",
 		},
 		{
 			id: 4,
@@ -75,15 +67,7 @@ const data = {
 			image:
 				"https://www.endofthefork.com/wp-content/uploads/2021/06/1200x1200-pasta-and-sauce.jpg",
 			instruction: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,",
-			inredients: [
-				"spaghetti",
-				"Parmesan cheese",
-				"olive oil",
-				"chopped tomatoes",
-				"onion",
-				"garlic",
-				"fresh basil",
-			],
+			inredients: "spaghetti Parmesan cheese olive oil chopped tomatoes onion garlic fresh basil",
 		},
 		{
 			id: 5,
@@ -93,15 +77,7 @@ const data = {
 			image:
 				"https://www.endofthefork.com/wp-content/uploads/2021/06/1200x1200-pasta-and-sauce.jpg",
 			instruction: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,",
-			inredients: [
-				"spaghetti",
-				"Parmesan cheese",
-				"olive oil",
-				"chopped tomatoes",
-				"onion",
-				"garlic",
-				"fresh basil",
-			],
+			inredients: "spaghetti Parmesan cheese olive oil chopped tomatoes onion garlic fresh basil",
 		},
 	],
 };

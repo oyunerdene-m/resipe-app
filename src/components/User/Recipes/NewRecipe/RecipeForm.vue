@@ -33,6 +33,7 @@
         data: function(){
             return {
                 recipe: {
+                    id: '',
                     name: '',
                     description: '',
                     image: '',
@@ -44,13 +45,13 @@
         
         methods: {
             addNewRecipe(){
-                const ingredientsArr = this.recipe.ingredients.split('\n')
-                this.recipe.ingredients = ingredientsArr;
+                this.recipe.id = data.user.userRecipes.length + 1
                 data.user.userRecipes.push(this.recipe)
                 this.$router.push('/my-recipes')
                 console.log(data.user.userRecipes)
             }
-        }
+        },
+        
     }
    
 </script>

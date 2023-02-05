@@ -34,8 +34,9 @@
                 .auth()
                 .signInWithEmailAndPassword(this.user.email, this.user.password)
                 .then(() => {
-                    this.$router.push('/home')
                     eventBus.$emit('loggedInUser', this.user)
+                    this.$router.push('/home')
+
                 })
                 .catch((error) => {
                 alert(error.message);

@@ -1,6 +1,7 @@
 <template>
     <li>
         <div class="recipe"> 
+
             <div class="recipe_image">
                 <img :src="recipe.image" alt="">
             </div>
@@ -8,8 +9,14 @@
                 <h3 @click="showDetail" class="recipe_name">{{ recipe.name }}</h3>
                 <p>{{recipe.description}}</p>
                 <button >
-                    <span v-if="!isFavorited" @click="addToFavorites">Add to favorites</span>
-                    <span v-else>Favorited</span>
+                    <p v-if="userstate">
+                        <span v-if="!isFavorited" @click="addToFavorites">Add to favorites</span>
+                        <span v-else>Favorited </span>
+                    </p>
+                    <p v-else>
+                        <span @click="addToFavorites">Add to favorites</span>
+                    </p>
+                  
                 </button>
 
             </div>
@@ -19,15 +26,16 @@
 </template>
 
 <script>
-    import {eventBus} from '../../main'
     import {isFavorited} from '../../lib/getFavorites';
     import data from '../../lib/data';
-    
+    import firebase from 'firebase';
+
     export default {
         data: function(){
             return {
                 isFavorited: isFavorited(this.recipe, data.user.favoritesIds),
-                favoritesIds: data.user.favoritesIds
+                favoritesIds: data.user.favoritesIds,
+                userstate:false
             }
         }, 
         props: ['recipe'],
@@ -41,7 +49,12 @@
                 this.isFavorited = true
 
             }
+        },
+        created(){
+            this.userstate = firebase.auth().currentUser
+
         }
+       
     }
 </script>
 

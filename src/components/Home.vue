@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div>
+        <div v-if="user">
             <h3>Welcome <span v-if="user">{{user.displayName}}</span></h3>
             <button><router-link to="/my-recipes">My recipes</router-link></button>
             <button><router-link to="/favorites">My favorites</router-link></button>
@@ -49,7 +49,7 @@
             logOut() {
                 firebase.auth().signOut().then(() => {
                     firebase.auth().onAuthStateChanged(() => {
-                    this.$router.push('/login')
+                    this.$router.push('/')
                     })
                 })
             }

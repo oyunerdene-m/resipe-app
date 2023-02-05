@@ -10,9 +10,7 @@
                 <h5>Instruction:</h5> 
                 <p>{{recipe.instruction}}</p>
                 <h5>Ingredients:</h5> 
-                <ul v-for="ingredient in recipe.inredients">
-                    <li>{{ingredient}}</li>
-                </ul>
+                <p>{{recipe.ingredients}}</p>
             </div>
         </div>
     </div>
@@ -31,7 +29,6 @@
         created(){
             eventBus.$on('recipeSelected', (data) => {
                 this.recipe = data
-                console.log(this.recipe)
 
             })
             eventBus.$on('recipeDeleted', (id) => {
