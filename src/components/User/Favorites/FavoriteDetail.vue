@@ -10,9 +10,8 @@
                 <h5>Instruction:</h5> 
                 <p>{{favorite.instruction}}</p>
                 <h5>Ingredients:</h5> 
-                <ul v-for="ingredient in favorite.inredients">
-                    <li>{{ingredient}}</li>
-                </ul>
+                <p>{{favorite.ingredients}}</p>
+                
             </div>
         </div>
         <button @click="removeFromFavorites">Remove from favorites</button>
