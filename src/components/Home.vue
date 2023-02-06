@@ -34,7 +34,6 @@
     import firebase from 'firebase'
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
-    import SearchForm from './Shared/Search/SearchForm.vue'
     import data from '../lib/data'
     import { eventBus } from '../main'
 
@@ -43,7 +42,6 @@
         components: {
             appRecipes: Recipes,
             recipeDetail: RecipeDetail,
-            searchForm: SearchForm
         },
 
         data: function(){

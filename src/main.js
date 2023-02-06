@@ -4,11 +4,10 @@ import { routes } from "./routes";
 import VueRouter from "vue-router";
 import firebase from "firebase/app";
 
-Vue.use(VueRouter);
-
 const router = new VueRouter({
 	routes,
 });
+Vue.use(VueRouter);
 
 Vue.config.productionTip = false;
 
