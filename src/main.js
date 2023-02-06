@@ -3,6 +3,7 @@ import App from "./App.vue";
 import { routes } from "./routes";
 import VueRouter from "vue-router";
 import firebase from "firebase/app";
+import "firebase/firestore";
 
 const router = new VueRouter({
 	routes,
@@ -22,6 +23,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+export const db = firebase.firestore();
 
 export const eventBus = new Vue();
 

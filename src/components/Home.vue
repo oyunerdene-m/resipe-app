@@ -35,6 +35,7 @@
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
     import data from '../lib/data'
+    import {db} from '../main'
 
     export default {
 
@@ -46,7 +47,8 @@
         data: function(){
             return {
                 user : null,
-               searchInput: ''
+                searchInput: '',
+                recipes: []
             }
         },
         created() {
@@ -57,7 +59,11 @@
                 this.user = null;
             }
             });
-            
+            db.collection('recipes').get().then(querySnapshot=>{
+                querySnapshot.forEach(doc=>{
+                    this.recipes.push(doc.data())
+                })
+            })
         },
         methods: {
             logOut() {
@@ -71,7 +77,7 @@
       
         computed: {
             filteredRecipe: function(){
-                const filtered = data.recipes.filter(recipe=> {
+                const filtered = this.recipes.filter(recipe=> {
                     if(recipe.name.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.description.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.instruction.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.ingredients.toLowerCase().includes(this.searchInput.toLowerCase())) {
                         return recipe
                     } 
