@@ -8,7 +8,7 @@ const data = {
 				name: "aaaa",
 				description: "aaafffeer",
 				image: "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
-				instruction: "Lorem ipsum dolor sit amet, consectetur ",
+				instruction: "Lorem ipsum dolor sit amet, consectetur",
 				ingredients: "meat flour",
 			},
 			{
@@ -65,7 +65,7 @@ const data = {
 			name: "xdddd",
 			description: "jhg uhghjk oiuoij ",
 			image:
-				"https://www.endofthefork.com/wp-content/uploads/2021/06/1200x1200-pasta-and-sauce.jpg",
+				"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
 			instruction: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,",
 			ingredients: "spaghetti Parmesan cheese olive oil chopped tomatoes onion garlic fresh basil",
 		},
@@ -75,7 +75,7 @@ const data = {
 			description:
 				"It is long like a string (hence the name, as spago means string) – round in cross-section and made from durum wheat semolina",
 			image:
-				"https://www.endofthefork.com/wp-content/uploads/2021/06/1200x1200-pasta-and-sauce.jpg",
+				"https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528",
 			instruction: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,",
 			ingredients: "spaghetti Parmesan cheese olive oil chopped tomatoes onion garlic fresh basil",
 		},

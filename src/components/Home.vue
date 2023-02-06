@@ -35,7 +35,6 @@
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
     import data from '../lib/data'
-    import { eventBus } from '../main'
 
     export default {
 
@@ -58,10 +57,7 @@
                 this.user = null;
             }
             });
-            eventBus.$on('filtered', data=>{
-                this.recipes = data
-
-            })
+            
         },
         methods: {
             logOut() {
