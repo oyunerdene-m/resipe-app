@@ -22,11 +22,9 @@
                 </ul>
             </nav> 
         </div>
-        <search-form></search-form>
+        <input type="text" placeholder="Search..." v-model="searchInput">
         <div class="main_page">
-
-            <app-recipes :recipes='recipes'></app-recipes>
-
+            <app-recipes :recipes='filteredRecipe' :searchInput="searchInput"></app-recipes>
             <recipe-detail></recipe-detail>
         </div>
     </div>
@@ -51,7 +49,7 @@
         data: function(){
             return {
                 user : null,
-                recipes: data.recipes,
+               searchInput: ''
             }
         },
         created() {
@@ -74,6 +72,17 @@
                     this.$router.push('/')
                     })
                 })
+            },
+        },
+      
+        computed: {
+            filteredRecipe: function(){
+                const filtered = data.recipes.filter(recipe=> {
+                    if(recipe.name.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.description.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.instruction.toLowerCase().includes(this.searchInput.toLowerCase()) || recipe.ingredients.toLowerCase().includes(this.searchInput.toLowerCase())) {
+                        return recipe
+                    } 
+                });
+                return filtered
             }
         }
     }
