@@ -38,16 +38,16 @@
         },
        
         created(){
-        const userRef = db.collection('users').doc(this.currentUserId)
-        userRef.get().then(snapshot=>{
-            if(snapshot.exists){
-                this.recipes = snapshot.data().userRecipes
-            } else {
-                console.log('No recipe yet!')
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
+            const userRef = db.collection('users').doc(this.currentUserId)
+            userRef.get().then(snapshot=>{
+                if(snapshot.exists){
+                    this.recipes = snapshot.data().userRecipes
+                } else {
+                    console.log('No recipe yet!')
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
         
         eventBus.$on('recipeDeleted', id => {
             this.recipes =  this.recipes.filter(recipe => recipe.id !== id)

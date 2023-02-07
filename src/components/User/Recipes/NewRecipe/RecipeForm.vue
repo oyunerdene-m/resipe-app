@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Add new recipe</h2>
-        <form @submit="addNewRecipe">
+        <form @submit.prevent="addNewRecipe">
             <div>
                 <label>Name</label>
                 <input v-model="recipe.name" type="text">
@@ -29,6 +29,7 @@
 <script>
     import { db } from '../../../../main'
     import firebase from 'firebase'
+
     export default {
         data: function(){
             return {
@@ -47,10 +48,11 @@
         methods: {
              addNewRecipe(){
                 var userRef = db.collection("users").doc(this.currentUserId);
-                // this.recipe.id = Math.random().toString()
-                // userRef.update({
-                //     userRecipes: firebase.firestore.FieldValue.arrayUnion(this.recipe)
-                // });
+                
+                this.recipe.id = Math.random().toString()
+                userRef.update({
+                    userRecipes: firebase.firestore.FieldValue.arrayUnion(this.recipe)
+                });
 
                 this.$router.push(`/my-recipes/${this.currentUserId}`)
             }
