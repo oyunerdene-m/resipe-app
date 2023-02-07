@@ -2,7 +2,7 @@
     <div class="container">
         <div v-if="user">
             <h3>Welcome <span v-if="user">{{user.displayName}}</span></h3>
-            <button><router-link to="/my-recipes">My recipes</router-link></button>
+            <button><router-link :to="`/my-recipes/${user.uid}`">My recipes</router-link></button>
             <button><router-link to="/favorites">My favorites</router-link></button>
             <button 
                 type="submit" 
@@ -17,7 +17,7 @@
                     <router-link to="/login">Login</router-link>
                 </li>
                 <li>
-                    <router-link to="/">Sign up</router-link>
+                    <router-link to="/signup">Sign up</router-link>
                 </li>
                 </ul>
             </nav> 
@@ -34,7 +34,6 @@
     import firebase from 'firebase'
     import Recipes from './Recipes/Recipes.vue'
     import RecipeDetail from './Recipes/RecipeDetail.vue'
-    import data from '../lib/data'
     import {db} from '../main'
 
     export default {

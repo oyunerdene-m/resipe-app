@@ -28,12 +28,12 @@ export const routes = [
 		component: FavoritesList,
 	},
 	{
-		path: "/my-recipes",
+		path: "/my-recipes/:userId",
 		name: "my-recipes",
 		component: Recipes,
 	},
 	{
-		path: "/my-recipes/new",
+		path: "/my-recipes/:userId/new",
 		name: "create",
 		component: RecipeForm,
 	},

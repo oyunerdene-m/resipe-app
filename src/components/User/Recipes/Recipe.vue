@@ -17,7 +17,6 @@
 
 <script>
     import {eventBus} from '../../../main'
-    
     export default {
         props: ['recipe'],
 
@@ -28,10 +27,9 @@
             deleteRecipe(){
                 eventBus.$emit('recipeDeleted', this.recipe.id)
             },
-            
-           
-           
-        }
+        },
+
+       
     }
 </script>
 
