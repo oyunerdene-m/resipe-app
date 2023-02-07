@@ -14,10 +14,7 @@
                 
             </div>
         </div>
-        <!-- <button @click="removeFromFavorites">Remove from favorites</button>
-       -->
     </div>
-    
 </template>
 
 <script>

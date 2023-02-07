@@ -38,8 +38,6 @@
                 eventBus.$emit('recipeSelected', this.recipe)
             },
         },
-
-       
     }
 </script>
 

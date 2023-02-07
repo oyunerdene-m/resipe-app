@@ -6,7 +6,6 @@
         </ul>
         <p v-if="searchInput && recipes.length <= 0"> Not Found!</p>
     </div>
-   
 </template>
 
 <script>

@@ -37,12 +37,10 @@
     import {db} from '../main'
 
     export default {
-
         components: {
             appRecipes: Recipes,
             recipeDetail: RecipeDetail,
         },
-
         data: function(){
             return {
                 user : null,

@@ -8,7 +8,6 @@
                     <favorite-item v-for="favorite in favorites" :favorite="favorite" :onRemoveFromFavorites="removeFromFavorites"></favorite-item >
                 </ul>
             </div>
-        
             <div class="detail">
                 <favorite-detail></favorite-detail>
             </div>

@@ -47,7 +47,7 @@
              addNewRecipe(){
                 const userRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes');
                 userRecipeRef.add(this.recipe)
-                .then((doc)=>{
+                .then(()=>{
                     console.log("Document added")
                 }).catch(error=>{
                     console.log("Error adding doc", error)

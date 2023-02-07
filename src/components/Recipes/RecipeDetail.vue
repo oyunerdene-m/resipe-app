@@ -13,11 +13,6 @@
                <p>{{recipe.ingredients}}</p>
             </div>
         </div>
-        <!-- <button >
-            <span v-if="!isFavorited">Add to favorites</span>
-            <span v-else>Favorited</span>
-        </button> -->
-
     </div>
     
 </template>

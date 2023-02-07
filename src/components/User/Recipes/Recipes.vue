@@ -1,10 +1,7 @@
 <template>
-
     <div class="content">
-
         <div class="my_list">
             <router-link to="/">Home</router-link>
-
             <h2>My recipes</h2>
             <button><router-link :to="`/my-recipes/${currentUserId}/new`">Add new recipe</router-link></button>
             <ul>
@@ -15,7 +12,6 @@
             <recipe-detail></recipe-detail>
         </div>
     </div>
-   
 </template>
 
 <script>
@@ -30,12 +26,10 @@
                 currentUserId: this.$route.params.userId
             }
         },
-
         components : {
             recipeItem: Recipe,
             recipeDetail: RecipeDetail
         },
-       
         created(){
             const userRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes');
             userRecipeRef.get().then(snapshot=>{
@@ -48,7 +42,6 @@
                 console.log("Error getting document:", error);
             });
         },
-        
         methods: {
             deleteRecipe(id){
                 const userDeleteRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes').doc(id);

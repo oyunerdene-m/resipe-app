@@ -8,9 +8,7 @@
                 <h3 @click="showDetail" class="recipe_name">{{ favorite.name }}</h3>
                 <p>{{favorite.description}}</p>
                 <button @click="onRemoveFromFavorites(favorite.id)">Remove from favorites</button>
-
             </div>
-
         </div>
     </li>
 </template>
