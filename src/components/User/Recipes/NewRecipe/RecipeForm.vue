@@ -28,14 +28,12 @@
 </template>
 <script>
     import { db } from '../../../../main'
-    import firebase from 'firebase'
 
     export default {
         data: function(){
             return {
                 currentUserId: this.$route.params.userId,
                 recipe: {
-                    id: '',
                     name: '',
                     description: '',
                     image: '',
@@ -47,13 +45,14 @@
         
         methods: {
              addNewRecipe(){
-                var userRef = db.collection("users").doc(this.currentUserId);
+                const userRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes');
+                userRecipeRef.add(this.recipe)
+                .then((doc)=>{
+                    console.log("Document added")
+                }).catch(error=>{
+                    console.log("Error adding doc", error)
+                })
                 
-                this.recipe.id = Math.random().toString()
-                userRef.update({
-                    userRecipes: firebase.firestore.FieldValue.arrayUnion(this.recipe)
-                });
-
                 this.$router.push(`/my-recipes/${this.currentUserId}`)
             }
         },

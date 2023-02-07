@@ -8,7 +8,7 @@
             <h2>My recipes</h2>
             <button><router-link :to="`/my-recipes/${currentUserId}/new`">Add new recipe</router-link></button>
             <ul>
-                <recipe-item  v-for="recipe in recipes" :recipe="recipe" ></recipe-item>
+                <recipe-item  v-for="recipe in recipes" :recipe="recipe" :onDelete="deleteTodo"></recipe-item>
             </ul>
         </div>
         <div class="detail">
@@ -22,7 +22,6 @@
     import Recipe from './Recipe.vue'
     import RecipeDetail from './RecipeDetail.vue';
     import {db} from '../../../main'
-    import { eventBus } from '../../../main';
 
     export default {
         data: function(){
@@ -38,27 +37,32 @@
         },
        
         created(){
-            const userRef = db.collection('users').doc(this.currentUserId)
-            userRef.get().then(snapshot=>{
-                if(snapshot.exists){
-                    this.recipes = snapshot.data().userRecipes
-                } else {
-                    console.log('No recipe yet!')
-                }
+            const userRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes');
+            userRecipeRef.get().then(snapshot=>{
+               snapshot.forEach(doc=>{
+                   let recipe = doc.data();
+                   recipe.id = doc.id;
+                  this.recipes.push(recipe)
+               })
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
+        },
         
-        eventBus.$on('recipeDeleted', id => {
-            this.recipes =  this.recipes.filter(recipe => recipe.id !== id)
-            db.collection('users').get().then(querySnapshot=>{
-                querySnapshot.forEach(doc=>{
-                    console.log(doc.data())
-                })
-            })
+        methods: {
+            deleteTodo(id){
+                const userDeleteRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes').doc(id);
             
-        })
-    }
+                userDeleteRecipeRef.delete().then(() => {
+                    console.log("Document successfully deleted!");
+                    window.location.reload()
+                }).catch((error) => {
+                    console.error("Error removing document: ", error);
+                });
+                
+            }
+        }
+       
     }
 </script>
 

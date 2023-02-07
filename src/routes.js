@@ -38,7 +38,7 @@ export const routes = [
 		component: RecipeForm,
 	},
 	{
-		path: "/my-recipes/edit/:id",
+		path: "/my-recipes/:userId/edit/:recipeId",
 		name: "edit",
 		component: EditForm,
 	},

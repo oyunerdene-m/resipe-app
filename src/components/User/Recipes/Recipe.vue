@@ -7,8 +7,8 @@
             <div class="recipe_text">
                 <h3 @click="showDetail" class="recipe_name">{{ recipe.name }}</h3>
                 <p>{{recipe.description}}</p>
-                <button><router-link :to="`/my-recipes/edit/${recipe.id}`">edit</router-link></button>
-                <button @click="deleteRecipe">delete</button>
+                <button><router-link :to="`/my-recipes/${currentUserId}/edit/${recipe.id}`">edit</router-link></button>
+                <button @click="onDelete(recipe.id)">delete</button>
             </div>
 
         </div>
@@ -18,14 +18,24 @@
 <script>
     import {eventBus} from '../../../main'
     export default {
-        props: ['recipe'],
+        data: function(){
+            return {
+                currentUserId: this.$route.params.userId
+            }
+        },
+
+        props: {
+            "recipe": {
+                type: Object
+            },
+            "onDelete": {
+                type: Function
+            }
+        },
 
         methods:{
             showDetail(){
                 eventBus.$emit('recipeSelected', this.recipe)
-            },
-            deleteRecipe(){
-                eventBus.$emit('recipeDeleted', this.recipe.id)
             },
         },
 
