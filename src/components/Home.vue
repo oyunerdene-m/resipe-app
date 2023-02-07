@@ -3,7 +3,7 @@
         <div v-if="user">
             <h3>Welcome <span v-if="user">{{user.displayName}}</span></h3>
             <button><router-link :to="`/my-recipes/${user.uid}`">My recipes</router-link></button>
-            <button><router-link to="/favorites">My favorites</router-link></button>
+            <button><router-link :to="`/favorites/${user.uid}`">My favorites</router-link></button>
             <button 
                 type="submit" 
                 @click="logOut()">
@@ -60,7 +60,9 @@
             });
             db.collection('recipes').get().then(querySnapshot=>{
                 querySnapshot.forEach(doc=>{
-                    this.recipes.push(doc.data())
+                    let recipe = doc.data();
+                    recipe.id = doc.id;
+                    this.recipes.push(recipe)
                 })
             })
         },

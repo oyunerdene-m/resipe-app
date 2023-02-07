@@ -29,13 +29,6 @@
         created(){
             eventBus.$on('recipeSelected', (data) => {
                 this.recipe = data
-                console.log(this.recipe)
-            })
-            eventBus.$on('recipeDeleted', (id) => {
-                if(this.recipe.id === id){
-                    this.recipe = null
-                }
-
             })
         }
     }

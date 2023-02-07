@@ -23,7 +23,7 @@ export const routes = [
 		component: Signup,
 	},
 	{
-		path: "/favorites",
+		path: "/favorites/:userId",
 		name: "favorites",
 		component: FavoritesList,
 	},

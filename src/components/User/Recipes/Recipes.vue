@@ -8,7 +8,7 @@
             <h2>My recipes</h2>
             <button><router-link :to="`/my-recipes/${currentUserId}/new`">Add new recipe</router-link></button>
             <ul>
-                <recipe-item  v-for="recipe in recipes" :recipe="recipe" :onDelete="deleteTodo"></recipe-item>
+                <recipe-item  v-for="recipe in recipes" :recipe="recipe" :onDelete="deleteRecipe"></recipe-item>
             </ul>
         </div>
         <div class="detail">
@@ -50,7 +50,7 @@
         },
         
         methods: {
-            deleteTodo(id){
+            deleteRecipe(id){
                 const userDeleteRecipeRef = db.collection('users').doc(this.currentUserId).collection('recipes').doc(id);
             
                 userDeleteRecipeRef.delete().then(() => {
@@ -59,10 +59,8 @@
                 }).catch((error) => {
                     console.error("Error removing document: ", error);
                 });
-                
             }
         }
-       
     }
 </script>
 
