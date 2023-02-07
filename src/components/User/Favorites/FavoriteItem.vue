@@ -7,7 +7,7 @@
             <div class="recipe_text">
                 <h3 @click="showDetail" class="recipe_name">{{ favorite.name }}</h3>
                 <p>{{favorite.description}}</p>
-                <button @click="removeFromFavorites">Remove from favorites</button>
+                <button @click="onRemoveFromFavorites(favorite.id)">Remove from favorites</button>
 
             </div>
 
@@ -23,16 +23,19 @@
             }
         },
 
-        props: ['favorite'],
+        props: {
+            'favorite': {
+                type: Object
+            },
+            'onRemoveFromFavorites':{
+                type: Function
+            }
+        },
 
         methods:{
             showDetail(){
                 eventBus.$emit('favoriteSelected', this.favorite)
             },
-
-            removeFromFavorites(){
-                eventBus.$emit('removedFromFavorites', this.favorite.id)
-            }
         }
     }
 

@@ -16,26 +16,22 @@
                     <p v-else>
                         <span @click="addToFavorites">Add to favorites</span>
                     </p>
-                  
                 </button>
-
             </div>
-
         </div>
     </li>
 </template>
 
 <script>
-    import {isFavorited} from '../../lib/getFavorites';
-    import data from '../../lib/data';
     import firebase from 'firebase';
+    import {db } from '../../main'
     import { eventBus } from '../../main';
 
     export default {
         data: function(){
             return {
-                isFavorited: isFavorited(this.recipe, data.user.favoritesIds),
-                favoritesIds: data.user.favoritesIds,
+                isFavorited: null,
+                favoritesIds: [],
                 userstate:false
             }
         }, 
@@ -46,14 +42,26 @@
                 eventBus.$emit('isFavorited', this.isFavorited)
             },
             addToFavorites(){
-                this.favoritesIds.push(this.recipe.id)
+                const userRef = db.collection('users').doc(this.userstate.uid)
+                userRef.update({
+                        favoritesIds: firebase.firestore.FieldValue.arrayUnion(this.recipe.id)
+                    }).then(()=>{
+                        console.log("Successfully added to favorites")
+                    }).catch(error=>{
+                        console.log("Error occured when add to favorites", error)
+                    })
                 this.isFavorited = true
-
             }
         },
         created(){
             this.userstate = firebase.auth().currentUser
-
+            const userRef = db.collection('users').doc(this.userstate.uid)
+            userRef.get().then(snapshot=>{
+               this.favoritesIds = snapshot.data().favoritesIds || [];
+               this.isFavorited = this.favoritesIds.includes(this.recipe.id);
+            }).catch(error=>{
+                console.log('Error occured', error)
+            })
         }
        
     }
