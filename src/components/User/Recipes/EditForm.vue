@@ -20,10 +20,11 @@
             </div>
             <div>
                 <label>Ingredients</label>
-                <textarea  v-model="recipe.inredients" id="" cols="20" rows="10"></textarea>
+                <textarea  v-model="recipe.ingredients" id="" cols="20" rows="10"></textarea>
             </div>
             <button>Save</button>
         </form>
+            <button><router-link :to="`/my-recipes/${currentUserId}`">Cancel</router-link></button>
     </div>
 </template>
 <script>

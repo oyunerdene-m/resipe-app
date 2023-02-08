@@ -69,6 +69,7 @@
                 firebase.auth().signOut().then(() => {
                     firebase.auth().onAuthStateChanged(() => {
                     this.$router.push('/')
+                    window.location.reload()
                     })
                 })
             },

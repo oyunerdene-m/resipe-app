@@ -41,11 +41,12 @@
                 eventBus.$emit('myrecipeSelected', this.recipe)
                 eventBus.$emit('isFavorited', this.isFavorited)
             },
-            addToFavorites(){
+            async addToFavorites(){
                 const userRef = db.collection('users').doc(this.userstate.uid)
-                userRef.update({
+               
+                userRef.set({
                         favoritesIds: firebase.firestore.FieldValue.arrayUnion(this.recipe.id)
-                    }).then(()=>{
+                    }, {merge: true}).then(()=>{
                         console.log("Successfully added to favorites")
                     }).catch(error=>{
                         console.log("Error occured when add to favorites", error)
@@ -55,13 +56,17 @@
         },
         created(){
             this.userstate = firebase.auth().currentUser
-            const userRef = db.collection('users').doc(this.userstate.uid)
-            userRef.get().then(snapshot=>{
+            let userRef;
+            if(this.userstate){
+                userRef = db.collection('users').doc(this.userstate.uid)
+                userRef.get().then(snapshot=>{
                this.favoritesIds = snapshot.data().favoritesIds || [];
                this.isFavorited = this.favoritesIds.includes(this.recipe.id);
             }).catch(error=>{
                 console.log('Error occured', error)
             })
+            }
+            
         }
        
     }
